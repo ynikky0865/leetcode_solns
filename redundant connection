@@ -1,0 +1,21 @@
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        def find(node):  #To find parent of a node
+            while(parent[node] != node):
+                node = parent[node]
+            return node
+
+        def union(i, j):
+            pi = find(i)
+            pj = find(j)
+            if pi != pj:
+                parent[pj] = pi
+
+        nv = len(edges)
+        parent = [ v for v in range(nv + 1)]
+        for edge in edges:
+            v1 = edge[0]
+            v2 = edge[1]
+            if find(v1) == find(v2):
+                return edge
+            union(v1, v2)
