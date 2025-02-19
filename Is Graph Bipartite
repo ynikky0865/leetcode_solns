@@ -1,0 +1,21 @@
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        color = [0]*len(graph)
+
+        for i in range(len(graph)):
+            if color[i] != 0:
+                continue
+            queue = collections.deque()
+            queue.append(i)
+            color[i] = 1
+
+            while queue:
+                ele = queue.popleft()
+                for n in graph[ele]:
+                    if color[n] != 0:
+                        if color[n] == color[ele]:
+                            return False
+                    else:
+                        color[n] = -1*color[ele]
+                        queue.append(n)
+        return True
