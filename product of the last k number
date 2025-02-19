@@ -1,0 +1,25 @@
+class ProductOfNumbers:    
+    def __init__(self):
+        self.prefix = [1]  # Prefix product list
+
+    def add(self, num: int) -> None:
+        if num == 0:
+            self.prefix = [1]  # Reset the prefix list
+        else:
+            self.prefix.append(self.prefix[-1] * num)  # Store cumulative product
+
+    def getProduct(self, k: int) -> int:
+        if k >= len(self.prefix):  
+            return 0  # If k is larger than available numbers, return 0
+        return self.prefix[-1] // self.prefix[-(k + 1)]  # Compute product using division
+
+# Example Usage:
+p = ProductOfNumbers()
+p.add(3)
+p.add(0)  # Resets the list
+p.add(2)
+p.add(5)
+p.add(4)
+print(p.getProduct(2))  # Output: 20 (5 * 4)
+print(p.getProduct(3))  # Output: 40 (2 * 5 * 4)
+print(p.getProduct(4))  # Output: 0 (Reset due to 0)
