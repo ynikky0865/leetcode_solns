@@ -1,0 +1,9 @@
+class Solution:
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        arr=[]
+        for i in range(0,len(nums),2):
+            f=nums[i]
+            v=nums[i+1]
+            c=f*[v]
+            arr.extend(c)
+        return arr
