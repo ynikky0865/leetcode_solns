@@ -1,0 +1,14 @@
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+
+        def mirror(leftroot, rightroot):
+            if not leftroot and not rightroot:
+                return True
+            if not leftroot or not rightroot or leftroot.val != rightroot.val:
+                return False
+            
+            c2 = mirror(leftroot.left, rightroot.right)
+            c3 = mirror(leftroot.right, rightroot.left)
+            return c2 and c3
+
+        return mirror(root.left, root.right)
