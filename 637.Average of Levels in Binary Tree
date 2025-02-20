@@ -1,0 +1,17 @@
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        res=[]
+        q=deque()
+        q.append(root)
+        while q:
+            level=[]
+            for i in range(len(q)):
+                current=q.popleft()
+                level.append(current.val)
+                if current.left:
+                    q.append(current.left)
+                if current.right:
+                    q.append(current.right)
+            s=sum(level)/len(level)
+            res.append(s)
+        return res
