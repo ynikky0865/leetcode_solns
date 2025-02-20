@@ -1,0 +1,15 @@
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or k==0:
+            return head
+        lenA=1
+        dummy=head
+        while dummy and dummy.next:
+            lenA+=1
+            dummy=dummy.next
+        dummy.next=head
+        for i in range(lenA-(k%lenA)-1):
+            head=head.next
+        res=head.next
+        head.next=None
+        return res
