@@ -1,0 +1,16 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        visited = set()
+        visited.add(n)
+        while True:
+            tot = 0
+            while n:
+                rem = n % 10
+                tot += rem * rem
+                n //= 10
+            if tot == 1:
+                return True
+            if tot in visited:
+                return False
+            visited.add(tot)
+            n = tot
