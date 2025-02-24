@@ -1,0 +1,25 @@
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        n = len(score)
+        arr = ['-']*n
+        s = sorted(score,reverse = True)
+        if n == 1:
+            arr[0] = "Gold Medal"
+        elif n == 2:
+            arr[score.index(s[0])] = "Gold Medal"
+            arr[score.index(s[1])] = "Silver Medal"
+        elif n == 3:
+            arr[score.index(s[0])] = "Gold Medal"
+            arr[score.index(s[1])] = "Silver Medal"
+            arr[score.index(s[2])] = "Bronze Medal"
+        else:
+            arr[score.index(s[0])] = "Gold Medal"
+            arr[score.index(s[1])] = "Silver Medal"
+            arr[score.index(s[2])] = "Bronze Medal"
+            for i in range(3,n):
+                arr[score.index(s[i])] = str(i+1)
+        return arr
+
+        
+
+        
