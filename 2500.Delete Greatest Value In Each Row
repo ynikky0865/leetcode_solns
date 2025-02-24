@@ -1,0 +1,14 @@
+class Solution:
+    def deleteGreatestValue(self, grid):
+        nr = len(grid)
+        nc = len(grid[0])
+        s = 0
+        for j in range(nc):
+            arr = []
+            for i in range(nr):
+                a = max(grid[i])
+                arr.append(a)
+                grid[i].remove(a)
+            m = max(arr)
+            s += m
+        return s
