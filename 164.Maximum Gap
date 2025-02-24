@@ -1,0 +1,14 @@
+class Solution:
+    def maximumGap(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        if n < 2:
+              return 0
+        else:
+            mn=0
+            for i in range(n-1):
+                d = nums[i+1]-nums[i]
+                if d>mn:
+                    mn=d
+            return mn
+        
