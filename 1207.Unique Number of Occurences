@@ -1,0 +1,10 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        d=collections.defaultdict()
+        for ele in arr:
+            if ele not in d:
+                d[ele] = 1
+            else:
+                d[ele] = d[ele]+1
+        res=d.values()
+        return len(res) == len(set(res))
