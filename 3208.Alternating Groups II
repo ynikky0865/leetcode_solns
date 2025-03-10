@@ -1,0 +1,13 @@
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int], k: int) -> int:
+        n = len(colors)
+        cnt = 0
+        alter = 1
+        for i in range(n + k - 2):
+            if colors[i % n] == colors[(i-1) % n]:
+                alter = 1
+            else:
+                alter += 1
+            if alter >= k:
+                cnt += 1
+        return cnt
