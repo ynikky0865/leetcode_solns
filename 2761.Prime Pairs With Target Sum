@@ -1,0 +1,16 @@
+class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+        if n < 2:
+            return []
+        prime_list =  [True] * (n+1)
+        prime_list[0] = False
+        prime_list[1] = False
+        for i in range(int(n**0.5+1)+1):
+            if prime_list[i] == True:
+                for j in range(i*2, n+1, i):
+                    prime_list[j] = False
+        res = []
+        for i in range(2, n//2 + 1):
+            if prime_list[n - i] and prime_list[i]:
+                res.append([i, n-i])
+        return sorted(res) 
