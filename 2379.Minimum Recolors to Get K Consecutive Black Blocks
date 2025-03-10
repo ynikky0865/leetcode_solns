@@ -1,0 +1,17 @@
+class Solution:
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        left = 0
+        cur_cnt = 0
+        for i in range(0,k):
+            if blocks[i] == 'W':
+                cur_cnt += 1
+        mn = cur_cnt
+
+        for right in range(k, len(blocks)):
+            if blocks[left] == 'W':
+                cur_cnt -= 1
+            if blocks[right] == 'W':
+                cur_cnt += 1
+            left += 1
+            mn = min(mn, cur_cnt)
+        return mn
