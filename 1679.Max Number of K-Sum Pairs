@@ -1,0 +1,17 @@
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        p1 = 0
+        p2 = len(nums) - 1
+        cnt = 0
+        while p1 < p2:
+            tot = nums[p1] + nums[p2]
+            if tot == k:
+                p1 += 1
+                p2 -= 1
+                cnt += 1            
+            elif tot > k:
+                p2 -= 1
+            else:
+                p1 += 1
+        return cnt
