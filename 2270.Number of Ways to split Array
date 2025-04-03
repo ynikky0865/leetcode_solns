@@ -1,0 +1,16 @@
+class Solution:
+    def waysToSplitArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        l_sum = [0] * n
+        r_sum = [0] * n
+        l_sum[0] = nums[0]
+        r_sum[0] = nums[-1]
+        for i in range(1, n):
+            l_sum[i] = l_sum[i-1] + nums[i]
+        for i in range(n-2, -1, -1):
+            r_sum[i] = r_sum[i+1] + nums[i+1]
+        cnt = 0
+        for i in range(n-1):
+            if l_sum[i] >= r_sum[i]:
+                cnt += 1
+        return cnt
