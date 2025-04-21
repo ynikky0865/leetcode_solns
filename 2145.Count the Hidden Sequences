@@ -1,0 +1,10 @@
+class Solution:
+    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
+        mn = 0
+        mx = 0
+        tot = 0
+        for diff in differences:
+            tot += diff
+            mn = min(mn, tot)
+            mx = max(mx, tot)
+        return max(0, upper - mx + mn - lower + 1)
